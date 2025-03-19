@@ -75,10 +75,10 @@ enum {
 KEYMAPS(
   [QWERTY] = KEYMAP_STACKED
   (
-    Key_Q   ,Key_W          ,Key_E        ,Key_R      ,Key_T
-    ,Key_A  ,Key_S          ,Key_D        ,Key_F      ,Key_G
-    ,Key_Z  ,Key_X          ,Key_C        ,Key_V      ,Key_B          ,Key_Backtick
-    ,TD(0)  ,Key_LeftShift  ,Key_LeftAlt  ,CTL_T(Tab) ,Key_Backspace  ,TG(ARR_NUM)
+    Key_Q   ,Key_W            ,Key_E        ,Key_R      ,Key_T
+    ,Key_A  ,Key_S            ,Key_D        ,Key_F      ,Key_G
+    ,Key_Z  ,Key_X            ,Key_C        ,Key_V      ,Key_B          ,Key_Backtick
+    ,TD(0)  ,SFT_T(CapsLock)  ,Key_LeftAlt  ,CTL_T(Tab) ,Key_Backspace  ,TG(ARR_NUM)
 
                       ,Key_Y  ,Key_U       ,Key_I     ,Key_O      ,Key_P
                       ,Key_H  ,Key_J       ,Key_K     ,Key_L      ,Key_Semicolon
