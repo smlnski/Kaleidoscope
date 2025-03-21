@@ -91,7 +91,7 @@ KEYMAPS(
     Key_Exclamation       ,Key_At                 ,Key_Hash         ,Key_Dollar       ,Key_Percent
     ,M(MACRO_a_UMLAUT)    ,M(MACRO_ESZETT)        ,Key_LeftParen    ,Key_RightParen   ,___
     ,Key_LeftCurlyBracket ,Key_RightCurlyBracket  ,Key_LeftBracket  ,Key_RightBracket ,___          ,___
-    ,___                  ,___                    ,___              ,___              ,___          ,___
+    ,___                  ,___                    ,___              ,___              ,___          ,XXX
 
           ,Key_Star   ,M(MACRO_u_UMLAUT) ,___ ,M(MACRO_o_UMLAUT) ,Key_KeypadDivide
           ,Key_And    ,___               ,___ ,___               ,Key_KeypadSubtract
@@ -109,7 +109,7 @@ KEYMAPS(
         ,Key_KeypadMultiply ,Key_7  ,Key_8  ,Key_9      ,Key_KeypadDivide
         ,___                ,Key_4  ,Key_5  ,Key_6      ,Key_KeypadSubtract
    ,___ ,___                ,Key_1  ,Key_2  ,Key_3      ,Key_KeypadAdd
-   ,___ ,___                ,___    ,Key_0  ,Key_Period ,Key_Equals
+   ,XXX ,___                ,___    ,Key_0  ,Key_Period ,Key_Equals
   )
 )
 // clang-format on
