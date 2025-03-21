@@ -210,6 +210,7 @@ void setup() {
   SpaceCadetConfig.disableSpaceCadetIfUnconfigured();
 
   Qukeys.setOverlapThreshold(20); // Helps to make CTR_L work with Eike's typing habits
+  OneShot.disableStickabilityForLayers();
 
   LongPress.enable();
   LongPress.setTimeout(130);
