@@ -209,6 +209,8 @@ void setup() {
   // no configuration exists.
   SpaceCadetConfig.disableSpaceCadetIfUnconfigured();
 
+  Qukeys.setOverlapThreshold(20); // Helps to make CTR_L work with Eike's typing habits
+
   LongPress.enable();
   LongPress.setTimeout(130);
   LongPress.setAutoshiftEnabled(LongPress.letterKeys() | LongPress.symbolKeys());
