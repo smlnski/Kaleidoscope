@@ -89,21 +89,21 @@ KEYMAPS(
   [SPC_UMLAUT] =  KEYMAP_STACKED
   (
     Key_Exclamation       ,Key_At                 ,Key_Hash         ,Key_Dollar       ,Key_Percent
-    ,M(MACRO_a_UMLAUT)    ,M(MACRO_ESZETT)        ,Key_LeftParen    ,Key_RightParen   ,___
-    ,Key_LeftCurlyBracket ,Key_RightCurlyBracket  ,Key_LeftBracket  ,Key_RightBracket ,___          ,___
+    ,M(MACRO_a_UMLAUT)    ,M(MACRO_ESZETT)        ,Key_LeftParen    ,Key_RightParen   ,XXX
+    ,Key_LeftCurlyBracket ,Key_RightCurlyBracket  ,Key_LeftBracket  ,Key_RightBracket ,XXX          ,___
     ,___                  ,___                    ,___              ,___              ,___          ,XXX
 
-          ,Key_Star   ,M(MACRO_u_UMLAUT) ,___ ,M(MACRO_o_UMLAUT) ,Key_KeypadDivide
-          ,Key_And    ,___               ,___ ,___               ,Key_KeypadSubtract
-    ,___  ,Key_Caret  ,___               ,___ ,___               ,Key_KeypadAdd
+          ,Key_Star   ,M(MACRO_u_UMLAUT) ,XXX ,M(MACRO_o_UMLAUT) ,Key_KeypadDivide
+          ,Key_And    ,XXX               ,XXX ,XXX               ,Key_KeypadSubtract
+    ,___  ,Key_Caret  ,XXX               ,XXX ,XXX               ,Key_KeypadAdd
     ,___  ,___        ,___               ,___ ,___               ,Key_Equals
   ),
 
   [ARR_NUM] =  KEYMAP_STACKED
   (
-    ___  ,___           ,Key_UpArrow    ,___            ,___
-    ,___ ,Key_LeftArrow ,Key_DownArrow  ,Key_RightArrow ,___
-    ,___ ,___           ,___            ,___            ,___ ,___
+    XXX  ,XXX           ,Key_UpArrow    ,XXX            ,XXX
+    ,XXX ,Key_LeftArrow ,Key_DownArrow  ,Key_RightArrow ,XXX
+    ,___ ,___           ,___            ,___            ,XXX ,___ // left Z, X, C, V transparent for undo, cut, copy, paste
     ,___ ,___           ,___            ,___            ,___ ,TG(ARR_NUM)
 
         ,Key_KeypadMultiply ,Key_7  ,Key_8  ,Key_9      ,Key_KeypadDivide
@@ -209,7 +209,7 @@ void setup() {
   // no configuration exists.
   SpaceCadetConfig.disableSpaceCadetIfUnconfigured();
 
-  Qukeys.setOverlapThreshold(20); // Helps to make CTR_L work with Eike's typing habits
+  Qukeys.setOverlapThreshold(20);  // Helps to make CTR_L work with Eike's typing habits
   OneShot.disableStickabilityForLayers();
 
   LongPress.enable();
