@@ -106,10 +106,10 @@ KEYMAPS(
     ,___ ,___           ,___            ,___            ,XXX ,___ // left Z, X, C, V transparent for undo, cut, copy, paste
     ,___ ,___           ,___            ,___            ,___ ,TG(ARR_NUM)
 
-        ,Key_KeypadMultiply ,Key_7  ,Key_8  ,Key_9      ,Key_KeypadDivide
-        ,___                ,Key_4  ,Key_5  ,Key_6      ,Key_KeypadSubtract
-   ,___ ,___                ,Key_1  ,Key_2  ,Key_3      ,Key_KeypadAdd
-   ,XXX ,___                ,___    ,Key_0  ,Key_Period ,Key_Equals
+        ,Key_KeypadMultiply ,Key_7      ,Key_8  ,Key_9      ,Key_KeypadDivide
+        ,___                ,Key_4      ,Key_5  ,Key_6      ,Key_KeypadSubtract
+   ,___ ,___                ,Key_1      ,Key_2  ,Key_3      ,Key_KeypadAdd
+   ,XXX ,___                ,Key_Comma  ,Key_0  ,Key_Period ,Key_Equals
   )
 )
 // clang-format on
