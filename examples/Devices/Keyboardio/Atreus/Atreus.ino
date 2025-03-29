@@ -95,7 +95,7 @@ KEYMAPS(
 
           ,Key_Star   ,M(MACRO_u_UMLAUT) ,XXX ,M(MACRO_o_UMLAUT) ,Key_KeypadDivide
           ,Key_And    ,XXX               ,XXX ,XXX               ,Key_KeypadSubtract
-    ,___  ,Key_Caret  ,XXX               ,XXX ,XXX               ,Key_KeypadAdd
+    ,___  ,Key_Caret  ,XXX               ,___ ,___               ,Key_KeypadAdd
     ,___  ,___        ,___               ,___ ,___               ,Key_Equals
   ),
 
