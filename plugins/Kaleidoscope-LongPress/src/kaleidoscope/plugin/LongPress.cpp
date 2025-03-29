@@ -29,6 +29,7 @@
 #include "kaleidoscope/key_defs.h"         // for Key, Key_0, Key_1, Key_A, Key_F1, Key_F12, Key...
 #include "kaleidoscope/keyswitch_state.h"  // for keyToggledOn, keyIsInjected
 #include "kaleidoscope/progmem_helpers.h"  // for cloneFromProgmem
+#include "kaleidoscope/LiveKeys.h"         // for LiveKeys, live_keys
 
 // IWYU pragma: no_include "HIDAliases.h"
 
@@ -235,6 +236,15 @@ void LongPress::flushEvent(bool is_long_press) {
     return;
   }
 
+  // Determine if a modifier is being held
+  bool modifier_held = false;
+  for (Key key : live_keys.all()) {
+    if (key.isKeyboardModifier()) {
+      modifier_held = true;
+      break;
+    }
+  }
+
   KeyEvent event = queue_.event(0);
   if (is_long_press) {
     if (mapped_key_.addr != KeyAddr::none()) {
@@ -243,8 +253,8 @@ void LongPress::flushEvent(bool is_long_press) {
     } else if (mapped_key_.key != Key_Transparent) {
       // If we have an explicit mapping for that logical key, apply that.
       event.key = mapped_key_.longpress_result;
-    } else {
-      // If there was no explicit mapping, just add the shift modifier
+    } else if (!modifier_held) {
+      // If there is no modifier held, just add the shift modifier
       event.key     = Runtime.lookupKey(event.addr);
       uint8_t flags = event.key.getFlags();
       flags ^= SHIFT_HELD;
