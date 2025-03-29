@@ -218,11 +218,11 @@ void setup() {
 
   LONGPRESS(
     // Window overview on Esc
-    kaleidoscope::plugin::LongPressKey(kaleidoscope::plugin::longpress::ALL_LAYERS, KeyAddr(3, 0), LGUI(Key_Tab)),
+    kaleidoscope::plugin::LongPressKey(kaleidoscope::plugin::longpress::ALL_LAYERS, TD(0), LGUI(Key_Tab)),
     // Delete last word on Backspace
-    kaleidoscope::plugin::LongPressKey(kaleidoscope::plugin::longpress::ALL_LAYERS, KeyAddr(3, 4), LCTRL(Key_Backspace)),
+    kaleidoscope::plugin::LongPressKey(kaleidoscope::plugin::longpress::ALL_LAYERS, Key_Backspace, LCTRL(Key_Backspace)),
     // Delete next word on Delete
-    kaleidoscope::plugin::LongPressKey(kaleidoscope::plugin::longpress::ALL_LAYERS, KeyAddr(3, 11), LCTRL(Key_Delete)),
+    kaleidoscope::plugin::LongPressKey(kaleidoscope::plugin::longpress::ALL_LAYERS, TD(2), LCTRL(Key_Delete)),
     // Autoshift umlauts
     kaleidoscope::plugin::LongPressKey(SPC_UMLAUT, M(MACRO_a_UMLAUT), M(MACRO_A_UMLAUT)),
     kaleidoscope::plugin::LongPressKey(SPC_UMLAUT, M(MACRO_u_UMLAUT), M(MACRO_U_UMLAUT)),
