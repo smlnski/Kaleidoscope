@@ -37,7 +37,7 @@
 #include <Kaleidoscope-LongPress.h>
 #include <Kaleidoscope-TapDance.h>
 
-#define MO(n) ShiftToLayer(n)
+#define MO(n) MoveToLayer(n)
 #define TG(n) LockLayer(n)
 
 enum {
@@ -96,7 +96,7 @@ KEYMAPS(
           ,Key_Star   ,M(MACRO_u_UMLAUT)  ,XXX ,M(MACRO_o_UMLAUT) ,Key_Minus
           ,Key_And    ,XXX                ,XXX ,XXX               ,Key_KeypadAdd
     ,___  ,Key_Caret  ,XXX                ,XXX ,XXX               ,Key_Equals
-    ,___  ,___        ,___                ,___ ,___               ,___
+    ,XXX  ,___        ,___                ,___ ,___               ,___
   ),
 
   [ARR_NUM] =  KEYMAP_STACKED
@@ -104,7 +104,7 @@ KEYMAPS(
     XXX  ,XXX           ,Key_UpArrow    ,XXX            ,XXX
     ,XXX ,Key_LeftArrow ,Key_DownArrow  ,Key_RightArrow ,XXX
     ,___ ,___           ,___            ,___            ,XXX ,___ // left Z, X, C, V transparent for undo, cut, copy, paste
-    ,___ ,___           ,___            ,___            ,___ ,TG(ARR_NUM)
+    ,___ ,___           ,___            ,___            ,___ ,XXX
 
         ,Key_KeypadMultiply ,Key_7  ,Key_8  ,Key_9      ,Key_Minus
         ,Key_KeypadDivide   ,Key_4  ,Key_5  ,Key_6      ,Key_KeypadAdd
@@ -223,6 +223,8 @@ void setup() {
     kaleidoscope::plugin::LongPressKey(kaleidoscope::plugin::longpress::ALL_LAYERS, Key_Backspace, LCTRL(Key_Backspace)),
     // Delete next word on Delete
     kaleidoscope::plugin::LongPressKey(kaleidoscope::plugin::longpress::ALL_LAYERS, TD(2), LCTRL(Key_Delete)),
+    // Reset to QWERTY layer on left thumb key
+    kaleidoscope::plugin::LongPressKey(kaleidoscope::plugin::longpress::ALL_LAYERS, KeyAddr(3, 5), MO(QWERTY)),
     // Autoshift umlauts
     kaleidoscope::plugin::LongPressKey(SPC_UMLAUT, M(MACRO_a_UMLAUT), M(MACRO_A_UMLAUT)),
     kaleidoscope::plugin::LongPressKey(SPC_UMLAUT, M(MACRO_u_UMLAUT), M(MACRO_U_UMLAUT)),
