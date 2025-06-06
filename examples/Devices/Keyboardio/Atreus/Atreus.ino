@@ -77,13 +77,13 @@ KEYMAPS(
   (
     Key_Q   ,Key_W            ,Key_E        ,Key_R      ,Key_T
     ,Key_A  ,Key_S            ,Key_D        ,Key_F      ,Key_G
-    ,Key_Z  ,Key_X            ,Key_C        ,Key_V      ,Key_B          ,Key_Backtick
-    ,TD(0)  ,SFT_T(CapsLock)  ,Key_LeftAlt  ,CTL_T(Tab) ,Key_Backspace  ,TG(ARR_NUM)
+    ,Key_Z  ,Key_X            ,Key_C        ,Key_V      ,Key_B        ,Key_Backtick
+    ,TD(0)  ,SFT_T(CapsLock)  ,Key_LeftAlt  ,CTL_T(Tab) ,TG(ARR_NUM)  ,OSL(SPC_UMLAUT)
 
                       ,Key_Y  ,Key_U       ,Key_I     ,Key_O      ,Key_P
                       ,Key_H  ,Key_J       ,Key_K     ,Key_L      ,Key_Semicolon
     ,Key_Backslash    ,Key_N  ,Key_M       ,Key_Comma ,Key_Period ,Key_Slash
-    ,OSL(SPC_UMLAUT)  ,TD(1)  ,Key_LeftGui ,Key_Minus ,Key_Quote  ,TD(2)
+    ,Key_Backspace    ,TD(1)  ,Key_LeftGui ,Key_Minus ,Key_Quote  ,TD(2)
   ),
 
   [SPC_UMLAUT] =  KEYMAP_STACKED
@@ -91,12 +91,12 @@ KEYMAPS(
     Key_Exclamation       ,Key_At                 ,Key_Hash         ,Key_Dollar       ,Key_Percent
     ,M(MACRO_a_UMLAUT)    ,M(MACRO_ESZETT)        ,Key_LeftParen    ,Key_RightParen   ,XXX
     ,Key_LeftCurlyBracket ,Key_RightCurlyBracket  ,Key_LeftBracket  ,Key_RightBracket ,XXX          ,___
-    ,___                  ,___                    ,___              ,___              ,___          ,XXX
+    ,___                  ,___                    ,___              ,___              ,___          ,___
 
-          ,Key_Star   ,M(MACRO_u_UMLAUT)  ,XXX ,M(MACRO_o_UMLAUT) ,Key_Minus
-          ,Key_And    ,XXX                ,XXX ,XXX               ,Key_KeypadAdd
+          ,Key_Star   ,M(MACRO_u_UMLAUT)  ,XXX ,M(MACRO_o_UMLAUT) ,Key_KeypadAdd
+          ,Key_And    ,XXX                ,XXX ,XXX               ,Key_Minus
     ,___  ,Key_Caret  ,XXX                ,XXX ,XXX               ,Key_Equals
-    ,XXX  ,___        ,___                ,___ ,___               ,___
+    ,___  ,___        ,___                ,___ ,___               ,___
   ),
 
   [ARR_NUM] =  KEYMAP_STACKED
@@ -104,12 +104,12 @@ KEYMAPS(
     XXX  ,XXX           ,Key_UpArrow    ,XXX            ,XXX
     ,XXX ,Key_LeftArrow ,Key_DownArrow  ,Key_RightArrow ,XXX
     ,___ ,___           ,___            ,___            ,XXX ,___ // left Z, X, C, V transparent for undo, cut, copy, paste
-    ,___ ,___           ,___            ,___            ,___ ,XXX
+    ,___ ,___           ,___            ,___            ,___ ,___
 
-        ,Key_KeypadMultiply ,Key_7  ,Key_8  ,Key_9      ,Key_Minus
-        ,Key_KeypadDivide   ,Key_4  ,Key_5  ,Key_6      ,Key_KeypadAdd
+        ,Key_KeypadMultiply ,Key_7  ,Key_8  ,Key_9      ,Key_KeypadAdd
+        ,Key_KeypadDivide   ,Key_4  ,Key_5  ,Key_6      ,Key_Minus
    ,___ ,Key_Comma          ,Key_1  ,Key_2  ,Key_3      ,Key_Equals
-   ,XXX ,___                ,___    ,Key_0  ,Key_Period ,___
+   ,___ ,___                ,___    ,Key_0  ,Key_Period ,___
   )
 )
 // clang-format on
@@ -219,12 +219,6 @@ void setup() {
   LONGPRESS(
     // Window overview on Esc
     kaleidoscope::plugin::LongPressKey(kaleidoscope::plugin::longpress::ALL_LAYERS, TD(0), LGUI(Key_Tab)),
-    // Delete last word on Backspace
-    kaleidoscope::plugin::LongPressKey(kaleidoscope::plugin::longpress::ALL_LAYERS, Key_Backspace, LCTRL(Key_Backspace)),
-    // Delete next word on Delete
-    kaleidoscope::plugin::LongPressKey(kaleidoscope::plugin::longpress::ALL_LAYERS, TD(2), LCTRL(Key_Delete)),
-    // Reset to QWERTY layer on left thumb key
-    kaleidoscope::plugin::LongPressKey(kaleidoscope::plugin::longpress::ALL_LAYERS, KeyAddr(3, 5), MO(QWERTY)),
     // Autoshift umlauts
     kaleidoscope::plugin::LongPressKey(SPC_UMLAUT, M(MACRO_a_UMLAUT), M(MACRO_A_UMLAUT)),
     kaleidoscope::plugin::LongPressKey(SPC_UMLAUT, M(MACRO_u_UMLAUT), M(MACRO_U_UMLAUT)),
