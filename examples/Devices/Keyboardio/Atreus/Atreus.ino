@@ -102,10 +102,10 @@ KEYMAPS(
 
   [ARR_NUM] =  KEYMAP_STACKED
   (
-    XXX  ,XXX           ,Key_UpArrow    ,XXX            ,XXX
-    ,XXX ,Key_LeftArrow ,Key_DownArrow  ,Key_RightArrow ,XXX
-    ,___ ,___           ,___            ,___            ,XXX ,___ // left Z, X, C, V transparent for undo, cut, copy, paste
-    ,___ ,___           ,___            ,___            ,___ ,___
+    Key_Home  ,Key_VolumeDown ,Key_UpArrow    ,Key_VolumeUp   ,Key_PageUp
+    ,Key_End  ,Key_LeftArrow  ,Key_DownArrow  ,Key_RightArrow ,Key_PageDown
+    ,___    ,___           ,___            ,___               ,XXX ,___ // left Z, X, C, V transparent for undo, cut, copy, paste
+    ,___    ,___           ,___            ,___               ,___ ,___
 
         ,Key_KeypadMultiply ,Key_7  ,Key_8  ,Key_9      ,Key_KeypadAdd
         ,Key_KeypadDivide   ,Key_4  ,Key_5  ,Key_6      ,Key_Minus
