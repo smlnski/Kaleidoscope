@@ -109,7 +109,7 @@ KEYMAPS(
 
         ,Key_KeypadMultiply ,Key_7  ,Key_8  ,Key_9      ,Key_KeypadAdd
         ,Key_KeypadDivide   ,Key_4  ,Key_5  ,Key_6      ,Key_Minus
-   ,___ ,Key_Comma          ,Key_1  ,Key_2  ,Key_3      ,Key_Equals
+   ,___ ,XXX                ,Key_1  ,Key_2  ,Key_3      ,Key_Equals
    ,___ ,___                ,___    ,Key_0  ,Key_Period ,___
   )
 )
