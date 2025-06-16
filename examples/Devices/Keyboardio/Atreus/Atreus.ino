@@ -218,6 +218,8 @@ void setup() {
   LongPress.setAutoshiftEnabled(LongPress.letterKeys() | LongPress.symbolKeys());
 
   LONGPRESS(
+    // Reset to QWERTY layer on left thumb key
+    kaleidoscope::plugin::LongPressKey(kaleidoscope::plugin::longpress::ALL_LAYERS, KeyAddr(3, 4), MO(QWERTY)),
     // Window overview on Esc
     kaleidoscope::plugin::LongPressKey(kaleidoscope::plugin::longpress::ALL_LAYERS, TD(0), LGUI(Key_Tab)),
     // Autoshift umlauts
