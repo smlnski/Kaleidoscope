@@ -69,7 +69,9 @@ enum {
   MACRO_u_UMLAUT,
   MACRO_U_UMLAUT,
   MACRO_o_UMLAUT,
-  MACRO_O_UMLAUT
+  MACRO_O_UMLAUT,
+  MACRO_e_AIGU,
+  MACRO_E_AIGU
 };
 
 // clang-format off
@@ -171,6 +173,16 @@ const macro_t *macroAction(uint8_t macro_id, KeyEvent &event) {
   case MACRO_O_UMLAUT:
     if (keyToggledOn(event.state)) {
       return MACRO(T(RightAlt), D(LeftShift), T(Quote), T(O), U(LeftShift));
+    }
+    break;
+  case MACRO_e_AIGU:
+    if (keyToggledOn(event.state)) {
+      return MACRO(T(RightAlt), T(Quote), T(E));
+    }
+    break;
+  case MACRO_E_AIGU:
+    if (keyToggledOn(event.state)) {
+      return MACRO(T(RightAlt), T(Quote), D(LeftShift), T(E), U(LeftShift));
     }
     break;
   default:
