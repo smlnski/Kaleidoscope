@@ -223,9 +223,7 @@ void setup() {
     // Autoshift umlauts
     kaleidoscope::plugin::LongPressKey(SPC_UMLAUT, M(MACRO_a_UMLAUT), M(MACRO_A_UMLAUT)),
     kaleidoscope::plugin::LongPressKey(SPC_UMLAUT, M(MACRO_u_UMLAUT), M(MACRO_U_UMLAUT)),
-    kaleidoscope::plugin::LongPressKey(SPC_UMLAUT, M(MACRO_o_UMLAUT), M(MACRO_O_UMLAUT)),
-    // F4 on 4
-    kaleidoscope::plugin::LongPressKey(ARR_NUM, Key_4, Key_F4));
+    kaleidoscope::plugin::LongPressKey(SPC_UMLAUT, M(MACRO_o_UMLAUT), M(MACRO_O_UMLAUT)));
 }
 
 void loop() {
