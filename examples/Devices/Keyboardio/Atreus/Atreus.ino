@@ -81,7 +81,7 @@ KEYMAPS(
     Key_Q   ,Key_W            ,Key_E        ,Key_R      ,Key_T
     ,Key_A  ,Key_S            ,Key_D        ,Key_F      ,Key_G
     ,Key_Z  ,Key_X            ,Key_C        ,Key_V      ,Key_B        ,Key_Backtick
-    ,TD(0)  ,SFT_T(CapsLock)  ,Key_LeftAlt  ,CTL_T(Tab) ,TG(ARR_NUM)  ,OSL(SPC_UMLAUT)
+    ,TD(0)  ,SFT_T(CapsLock)  ,Key_LeftAlt  ,CTL_T(Tab) ,OSL(ARR_NUM) ,OSL(SPC_UMLAUT)
 
                       ,Key_Y  ,Key_U       ,Key_I     ,Key_O      ,Key_P
                       ,Key_H  ,Key_J       ,Key_K     ,Key_L      ,Key_Semicolon
@@ -220,15 +220,12 @@ void setup() {
   SpaceCadetConfig.disableSpaceCadetIfUnconfigured();
 
   Qukeys.setOverlapThreshold(20);  // Helps to make CTR_L work with Eike's typing habits
-  OneShot.disableStickabilityForLayers();
 
   LongPress.enable();
   LongPress.setTimeout(130);
   LongPress.setAutoshiftEnabled(LongPress.letterKeys() | LongPress.symbolKeys());
 
   LONGPRESS(
-    // Reset to QWERTY layer on left thumb key
-    kaleidoscope::plugin::LongPressKey(kaleidoscope::plugin::longpress::ALL_LAYERS, KeyAddr(3, 4), MO(QWERTY)),
     // Window overview on Esc
     kaleidoscope::plugin::LongPressKey(kaleidoscope::plugin::longpress::ALL_LAYERS, TD(0), LGUI(Key_Tab)),
     // Autoshift umlauts
