@@ -96,21 +96,21 @@ KEYMAPS(
     ,Key_LeftCurlyBracket ,Key_RightCurlyBracket  ,Key_LeftBracket  ,Key_RightBracket ,XXX          ,___
     ,___                  ,___                    ,___              ,___              ,___          ,___
 
-          ,Key_Star   ,M(MACRO_u_UMLAUT)  ,XXX ,M(MACRO_o_UMLAUT) ,Key_KeypadAdd
-          ,Key_And    ,XXX                ,XXX ,XXX               ,Key_Minus
-    ,___  ,Key_Caret  ,XXX                ,XXX ,XXX               ,Key_Equals
-    ,___  ,___        ,___                ,___ ,___               ,___
+          ,Key_Star ,M(MACRO_u_UMLAUT)  ,Key_And  ,M(MACRO_o_UMLAUT)  ,Key_Caret
+          ,XXX      ,XXX                ,XXX      ,XXX                ,___
+    ,___  ,XXX      ,XXX                ,___      ,___                ,___
+    ,___  ,___      ,___                ,___      ,___                ,___
   ),
 
   [ARR_NUM] =  KEYMAP_STACKED
   (
-    XXX       ,Key_PageUp     ,Key_UpArrow    ,Key_PageDown   ,XXX
-    ,Key_Home ,Key_LeftArrow  ,Key_DownArrow  ,Key_RightArrow ,Key_End
-    ,___    ,___           ,___            ,___               ,XXX ,___ // left Z, X, C, V transparent for undo, cut, copy, paste
-    ,___    ,___           ,___            ,___               ,___ ,___
+    Key_Home ,LCTRL(Key_LeftArrow)  ,Key_UpArrow    ,LCTRL(Key_RightArrow)  ,Key_PageUp
+    ,Key_End ,Key_LeftArrow         ,Key_DownArrow  ,Key_RightArrow         ,Key_PageDown
+    ,___    ,___           ,___     ,___            ,XXX                    ,___ // left Z, X, C, V transparent for undo, cut, copy, paste
+    ,___    ,___           ,___     ,___            ,___                    ,___
 
-        ,Key_KeypadMultiply ,Key_7      ,Key_8  ,Key_9      ,Key_KeypadAdd
-        ,Key_KeypadDivide   ,Key_4      ,Key_5  ,Key_6      ,Key_Minus
+        ,Key_KeypadMultiply ,Key_7      ,Key_8  ,Key_9      ,Key_Minus
+        ,Key_KeypadDivide   ,Key_4      ,Key_5  ,Key_6      ,Key_KeypadAdd
    ,___ ,Key_Semicolon      ,Key_1      ,Key_2  ,Key_3      ,Key_Equals
    ,___ ,___                ,Key_Comma  ,Key_0  ,Key_Period ,___
   )
