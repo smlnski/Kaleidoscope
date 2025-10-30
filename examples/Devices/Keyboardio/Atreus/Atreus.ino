@@ -59,7 +59,8 @@ enum {
 enum {
   QWERTY,
   SPC_UMLAUT,
-  ARR_NUM
+  ARR_NUM,
+  ALT_F
 };
 
 enum {
@@ -78,10 +79,10 @@ enum {
 KEYMAPS(
   [QWERTY] = KEYMAP_STACKED
   (
-    Key_Q   ,Key_W            ,Key_E        ,Key_R      ,Key_T
-    ,Key_A  ,Key_S            ,Key_D        ,Key_F      ,Key_G
-    ,Key_Z  ,Key_X            ,Key_C        ,Key_V      ,Key_B        ,Key_Backtick
-    ,TD(0)  ,SFT_T(CapsLock)  ,Key_LeftAlt  ,CTL_T(Tab) ,OSL(ARR_NUM) ,OSL(SPC_UMLAUT)
+    Key_Q   ,Key_W            ,Key_E              ,Key_R      ,Key_T
+    ,Key_A  ,Key_S            ,Key_D              ,Key_F      ,Key_G
+    ,Key_Z  ,Key_X            ,Key_C              ,Key_V      ,Key_B        ,Key_Backtick
+    ,TD(0)  ,SFT_T(CapsLock)  ,ML(LeftAlt, ALT_F) ,CTL_T(Tab) ,OSL(ARR_NUM) ,OSL(SPC_UMLAUT)
 
                       ,Key_Y  ,Key_U       ,Key_I     ,Key_O      ,Key_P
                       ,Key_H  ,Key_J       ,Key_K     ,Key_L      ,Key_Semicolon
@@ -113,6 +114,19 @@ KEYMAPS(
         ,Key_KeypadDivide   ,Key_4      ,Key_5  ,Key_6      ,Key_KeypadAdd
    ,___ ,Key_Semicolon      ,Key_1      ,Key_2  ,Key_3      ,Key_Equals
    ,___ ,___                ,Key_Comma  ,Key_0  ,Key_Period ,___
+  ),
+
+  [ALT_F] = KEYMAP_STACKED
+  (
+    ___   ,Key_Tab      ,___ ,Key_F4          ,___
+    ,___  ,Key_LeftArrow ,___ ,Key_RightArrow  ,___
+    ,___  ,___           ,___ ,___             ,___ ,___
+    ,___  ,___           ,___ ,___             ,___ ,___
+
+         ,___ ,___    ,___ ,___ ,___
+         ,___ ,___    ,___ ,___ ,___
+    ,___ ,___ ,___    ,___ ,___ ,___
+    ,___ ,___ ,___    ,___ ,___ ,___
   )
 )
 // clang-format on
