@@ -60,8 +60,7 @@ enum {
   LAY_QWERTY,
   LAY_SPC_UMLAUT,
   LAY_ARR_NUM,
-  LAY_ALT_F,
-  LAY_GUI
+  LAY_ALT_F
 };
 
 enum {
@@ -82,13 +81,13 @@ KEYMAPS(
   (
     Key_Q   ,Key_W            ,Key_E                  ,Key_R      ,Key_T
     ,Key_A  ,Key_S            ,Key_D                  ,Key_F      ,Key_G
-    ,Key_Z  ,Key_X            ,Key_C                  ,Key_V      ,Key_B        ,Key_Backtick
+    ,Key_Z  ,Key_X            ,Key_C                  ,Key_V      ,Key_B            ,Key_Backtick
     ,TD(0)  ,SFT_T(CapsLock)  ,ML(LeftAlt, LAY_ALT_F) ,CTL_T(Tab) ,OSL(LAY_ARR_NUM) ,OSL(LAY_SPC_UMLAUT)
 
-                      ,Key_Y  ,Key_U       ,Key_I     ,Key_O      ,Key_P
-                      ,Key_H  ,Key_J       ,Key_K     ,Key_L      ,Key_Semicolon
-    ,Key_Backslash    ,Key_N  ,Key_M       ,Key_Comma ,Key_Period ,Key_Slash
-    ,Key_Backspace    ,TD(1)  ,ML(LeftGui, LAY_GUI)   ,Key_Minus ,Key_Quote  ,Key_Delete
+                    ,Key_Y  ,Key_U        ,Key_I      ,Key_O       ,Key_P
+                    ,Key_H  ,Key_J        ,Key_K      ,Key_L       ,Key_Semicolon
+    ,Key_Backslash  ,Key_N  ,Key_M        ,Key_Comma  ,Key_Period  ,Key_Slash
+    ,Key_Backspace  ,TD(1)  ,Key_LeftGui  ,Key_Minus  ,Key_Quote   ,Key_Delete
   ),
 
   [LAY_SPC_UMLAUT] =  KEYMAP_STACKED
@@ -106,8 +105,8 @@ KEYMAPS(
 
   [LAY_ARR_NUM] =  KEYMAP_STACKED
   (
-    Key_Home ,LCTRL(Key_LeftArrow)  ,Key_UpArrow    ,LCTRL(Key_RightArrow)  ,Key_PageUp
-    ,Key_End ,Key_LeftArrow         ,Key_DownArrow  ,Key_RightArrow         ,Key_PageDown
+    Key_Home  ,LCTRL(Key_LeftArrow) ,Key_UpArrow    ,LCTRL(Key_RightArrow)  ,Key_PageUp
+    ,Key_End  ,Key_LeftArrow        ,Key_DownArrow  ,Key_RightArrow         ,Key_PageDown
     ,___    ,___           ,___     ,___            ,XXX                    ,___ // left Z, X, C, V transparent for undo, cut, copy, paste
     ,___    ,___           ,___     ,___            ,___                    ,___
 
@@ -127,20 +126,7 @@ KEYMAPS(
          ,___ ,Key_F7 ,Key_F8 ,Key_F9 ,___
          ,___ ,Key_F4 ,Key_F5 ,Key_F6 ,___
     ,___ ,___ ,Key_F1 ,Key_F2 ,Key_F3 ,___
-    ,___ ,___ ,___    ,___ ,___ ,___
-  ),
-
-  [LAY_GUI] = KEYMAP_STACKED
-  (
-    ___   ,___            ,Key_UpArrow    ,___          ,___
-    ,___  ,Key_LeftArrow  ,Key_DownArrow  ,Key_RightArrow  ,___
-    ,___  ,___            ,___ ,___       ,___ ,___
-    ,___  ,___            ,___ ,___       ,___ ,___
-
-         ,___ ,___    ,___ ,___ ,___
-         ,___ ,___    ,___ ,___ ,___
-    ,___ ,___ ,___    ,___ ,___ ,___
-    ,___ ,___ ,___    ,___ ,___ ,___
+    ,___ ,___ ,___    ,___    ,___    ,___
   )
 )
 // clang-format on
