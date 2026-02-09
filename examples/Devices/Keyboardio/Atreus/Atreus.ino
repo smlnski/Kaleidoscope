@@ -60,7 +60,8 @@ enum {
   LAY_QWERTY,
   LAY_SPC_UMLAUT,
   LAY_ARR_NUM,
-  LAY_ALT_F
+  LAY_ALT_F,
+  LAY_F
 };
 
 enum {
@@ -107,8 +108,8 @@ KEYMAPS(
   (
     Key_Home  ,LCTRL(Key_LeftArrow) ,Key_UpArrow    ,LCTRL(Key_RightArrow)  ,Key_PageUp
     ,Key_End  ,Key_LeftArrow        ,Key_DownArrow  ,Key_RightArrow         ,Key_PageDown
-    ,___    ,___           ,___     ,___            ,XXX                    ,___ // left Z, X, C, V transparent for undo, cut, copy, paste
-    ,___    ,___           ,___     ,___            ,___                    ,___
+    ,___      ,___                  ,___            ,___                    ,XXX          ,___ // left Z, X, C, V transparent for undo, cut, copy, paste
+    ,___      ,___                  ,SH(LAY_F)      ,___                    ,___          ,___
 
         ,Key_KeypadMultiply ,Key_7      ,Key_8  ,Key_9      ,Key_Minus
         ,Key_KeypadDivide   ,Key_4      ,Key_5  ,Key_6      ,Key_KeypadAdd
@@ -126,6 +127,19 @@ KEYMAPS(
          ,___ ,___ ,___ ,___ ,___
          ,___ ,___ ,___ ,___ ,___
     ,___ ,___ ,___ ,___ ,___ ,___
+    ,___ ,___ ,___ ,___ ,___ ,___
+  ),
+
+  [LAY_F] = KEYMAP_STACKED
+  (
+    ___   ,___ ,___ ,___ ,___
+    ,___  ,___ ,___ ,___ ,___
+    ,___  ,___ ,___ ,___ ,___ ,___
+    ,___  ,___ ,___ ,___ ,___ ,___
+
+         ,___ ,Key_F7 ,Key_F8 ,Key_F9 ,Key_F10
+         ,___ ,Key_F4 ,Key_F5 ,Key_F6 ,Key_F11
+    ,___ ,___ ,Key_F1 ,Key_F2 ,Key_F3 ,Key_F12
     ,___ ,___ ,___    ,___    ,___    ,___
   )
 )
