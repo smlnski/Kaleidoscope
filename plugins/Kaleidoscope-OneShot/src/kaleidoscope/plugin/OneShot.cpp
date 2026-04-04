@@ -30,6 +30,7 @@
 #include "kaleidoscope/KeyAddr.h"               // for KeyAddr, MatrixAddr
 #include "kaleidoscope/KeyAddrBitfield.h"       // for KeyAddrBitfield, KeyAddrBitfield::Iterator
 #include "kaleidoscope/KeyEvent.h"              // for KeyEvent
+#include "kaleidoscope/LiveKeys.h"              // for LiveKeys, live_keys
 #include "kaleidoscope/Runtime.h"               // for Runtime, Runtime_
 #include "kaleidoscope/event_handler_result.h"  // for EventHandlerResult, EventHandlerResult::OK
 #include "kaleidoscope/key_defs.h"              // for Key, Key_LeftControl, LAYER_SHIFT_OFFSET
@@ -224,11 +225,21 @@ EventHandlerResult OneShot::onKeyEvent(KeyEvent &event) {
         temp_addrs_.set(event.addr);
         start_time_ = Runtime.millisAtCycleStart();
       } else if (!event.key.isMomentary()) {
-        // Only trigger release of temporary one-shot keys if the pressed key is
-        // neither a modifier nor a layer shift. We need the actual release of
-        // those keys to happen after the current event is finished, however, so
-        // we trigger it by back-dating the start time, so that the timeout
-        // check will trigger in the afterEachCycle() hook.
+        // Release any active one-shot layer keys immediately when a normal key
+        // is pressed. Unlike modifiers, layer keys change the interpretation of
+        // subsequent keys, so they must be deactivated before the current event
+        // is fully processed to prevent the next key from being interpreted
+        // through the wrong layer context (causing phantom duplicate keys when
+        // typing fast). Modifier keys can continue using timeout-based release
+        // since they modify but do not change the interpretation of a key.
+        for (KeyAddr key_addr : glue_addrs_) {
+          if (temp_addrs_.read(key_addr) &&
+              live_keys[key_addr].isLayerShift()) {
+            releaseKey(key_addr);
+          }
+        }
+        // Back-date the start time to trigger timeout-based release for any
+        // remaining temporary one-shot keys (primarily modifiers).
         start_time_ -= settings_.timeout;
       }
 
