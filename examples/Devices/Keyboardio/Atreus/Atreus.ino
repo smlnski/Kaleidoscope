@@ -36,6 +36,7 @@
 #include "Kaleidoscope-LayerNames.h"
 #include <Kaleidoscope-LongPress.h>
 #include <Kaleidoscope-TapDance.h>
+#include "KeyboardioHID.h"
 
 #define MO(n) MoveToLayer(n)
 #define TG(n) LockLayer(n)
@@ -149,15 +150,11 @@ namespace kaleidoscope {
 class CapsLockOffOnLayerSwitch : public Plugin {
  public:
   EventHandlerResult onLayerChange() {
-    if (!(Layer.isActive(LAY_SPC_UMLAUT) ||
-          Layer.isActive(LAY_ARR_NUM) ||
-          Layer.isActive(LAY_ALT_F) ||
-          Layer.isActive(LAY_F))) {
+    if (!Layer.isActive(LAY_ARR_NUM)) {
       return EventHandlerResult::OK;
     }
 
-    constexpr uint8_t caps_lock_led = 0x02;
-    if (!(Runtime.hid().keyboard().getKeyboardLEDs() & caps_lock_led)) {
+    if (!(Runtime.hid().keyboard().getKeyboardLEDs() & LED_CAPS_LOCK)) {
       return EventHandlerResult::OK;
     }
 
@@ -289,6 +286,8 @@ void setup() {
     kaleidoscope::plugin::LongPressKey(LAY_SPC_UMLAUT, M(MACRO_a_UMLAUT), M(MACRO_A_UMLAUT)),
     kaleidoscope::plugin::LongPressKey(LAY_SPC_UMLAUT, M(MACRO_u_UMLAUT), M(MACRO_U_UMLAUT)),
     kaleidoscope::plugin::LongPressKey(LAY_SPC_UMLAUT, M(MACRO_o_UMLAUT), M(MACRO_O_UMLAUT)));
+
+  OneShot.disableStickability(OSL(LAY_SPC_UMLAUT));
 }
 
 void loop() {
