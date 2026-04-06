@@ -145,6 +145,34 @@ KEYMAPS(
 )
 // clang-format on
 
+namespace kaleidoscope {
+class CapsLockOffOnLayerSwitch : public Plugin {
+ public:
+  EventHandlerResult onLayerChange() {
+    if (!(Layer.isActive(LAY_SPC_UMLAUT) ||
+          Layer.isActive(LAY_ARR_NUM) ||
+          Layer.isActive(LAY_ALT_F) ||
+          Layer.isActive(LAY_F))) {
+      return EventHandlerResult::OK;
+    }
+
+    constexpr uint8_t caps_lock_led = 0x02;
+    if (!(Runtime.hid().keyboard().getKeyboardLEDs() & caps_lock_led)) {
+      return EventHandlerResult::OK;
+    }
+
+    Runtime.hid().keyboard().pressRawKey(Key_CapsLock);
+    Runtime.hid().keyboard().sendReport();
+    Runtime.hid().keyboard().releaseRawKey(Key_CapsLock);
+    Runtime.hid().keyboard().sendReport();
+
+    return EventHandlerResult::OK;
+  }
+};
+}  // namespace kaleidoscope
+
+kaleidoscope::CapsLockOffOnLayerSwitch CapsLockOffOnLayerSwitch;
+
 KALEIDOSCOPE_INIT_PLUGINS(
   EEPROMSettings,
   EEPROMKeymap,
@@ -153,6 +181,7 @@ KALEIDOSCOPE_INIT_PLUGINS(
   FocusEEPROMCommand,
   FirmwareVersion,
   LayerNames,
+  CapsLockOffOnLayerSwitch,
   Qukeys,
   SpaceCadet,
   SpaceCadetConfig,
