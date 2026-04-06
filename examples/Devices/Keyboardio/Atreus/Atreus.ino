@@ -93,10 +93,10 @@ KEYMAPS(
 
   [LAY_SPC_UMLAUT] =  KEYMAP_STACKED
   (
-    Key_Exclamation       ,Key_At                 ,Key_Hash         ,Key_Dollar       ,Key_Percent
-    ,M(MACRO_a_UMLAUT)    ,M(MACRO_ESZETT)        ,Key_LeftParen    ,Key_RightParen   ,XXX
-    ,Key_LeftCurlyBracket ,Key_RightCurlyBracket  ,Key_LeftBracket  ,Key_RightBracket ,XXX          ,___
-    ,___                  ,___                    ,___              ,___              ,___          ,___
+    Key_Exclamation     ,Key_At           ,Key_Hash             ,Key_Dollar             ,Key_Percent
+    ,M(MACRO_a_UMLAUT)  ,M(MACRO_ESZETT)  ,Key_LeftParen        ,Key_RightParen         ,XXX
+    ,Key_LeftBracket    ,Key_RightBracket ,Key_LeftCurlyBracket ,Key_RightCurlyBracket  ,XXX          ,___
+    ,___                ,___              ,___                  ,___                    ,___          ,___
 
           ,Key_Star ,M(MACRO_u_UMLAUT)  ,Key_And  ,M(MACRO_o_UMLAUT)  ,Key_Caret
           ,XXX      ,XXX                ,XXX      ,XXX                ,___
