@@ -60,7 +60,6 @@ enum {
   LAY_QWERTY,
   LAY_SPC_UMLAUT,
   LAY_ARR_NUM,
-  LAY_ALT_F,
   LAY_F
 };
 
@@ -73,22 +72,23 @@ enum {
   MACRO_o_UMLAUT,
   MACRO_O_UMLAUT,
   MACRO_e_AIGU,
-  MACRO_E_AIGU
+  MACRO_E_AIGU,
+  MACRO_GUI_Space
 };
 
 // clang-format off
 KEYMAPS(
   [LAY_QWERTY] = KEYMAP_STACKED
   (
-    Key_Q   ,Key_W            ,Key_E                  ,Key_R      ,Key_T
-    ,Key_A  ,Key_S            ,Key_D                  ,Key_F      ,Key_G
-    ,Key_Z  ,Key_X            ,Key_C                  ,Key_V      ,Key_B            ,Key_Backtick
-    ,TD(0)  ,SFT_T(CapsLock)  ,ML(LeftAlt, LAY_ALT_F) ,CTL_T(Tab) ,OSL(LAY_ARR_NUM) ,OSL(LAY_SPC_UMLAUT)
+    Key_Q   ,Key_W            ,Key_E        ,Key_R      ,Key_T
+    ,Key_A  ,Key_S            ,Key_D        ,Key_F      ,Key_G
+    ,Key_Z  ,Key_X            ,Key_C        ,Key_V      ,Key_B            ,Key_Backtick
+    ,TD(0)  ,Key_LeftControl  ,Key_LeftAlt  ,GUI_T(Tab) ,OSL(LAY_ARR_NUM) ,OSL(LAY_SPC_UMLAUT)
 
-                    ,Key_Y  ,Key_U        ,Key_I      ,Key_O       ,Key_P
-                    ,Key_H  ,Key_J        ,Key_K      ,Key_L       ,Key_Semicolon
-    ,Key_Backslash  ,Key_N  ,Key_M        ,Key_Comma  ,Key_Period  ,Key_Slash
-    ,Key_Backspace  ,TD(1)  ,Key_LeftGui  ,Key_Minus  ,Key_Quote   ,Key_Delete
+                    ,Key_Y  ,Key_U              ,Key_I      ,Key_O       ,Key_P
+                    ,Key_H  ,Key_J              ,Key_K      ,Key_L       ,Key_Semicolon
+    ,Key_Backslash  ,Key_N  ,Key_M              ,Key_Comma  ,Key_Period  ,Key_Slash
+    ,Key_Backspace  ,TD(1)  ,M(MACRO_GUI_Space) ,Key_Minus  ,Key_Quote   ,Key_Delete
   ),
 
   [LAY_SPC_UMLAUT] =  KEYMAP_STACKED
@@ -106,7 +106,7 @@ KEYMAPS(
 
   [LAY_ARR_NUM] =  KEYMAP_STACKED
   (
-    Key_PageUp  ,LCTRL(Key_LeftArrow) ,Key_UpArrow    ,LCTRL(Key_RightArrow)  ,Key_PageDown
+    Key_PageUp  ,LALT(Key_LeftArrow)  ,Key_UpArrow    ,LALT(Key_RightArrow)   ,Key_PageDown
     ,Key_Home   ,Key_LeftArrow        ,Key_DownArrow  ,Key_RightArrow         ,Key_End
     ,___      ,___                    ,___            ,___                    ,XXX          ,___ // left Z, X, C, V transparent for undo, cut, copy, paste
     ,___      ,___                    ,SH(LAY_F)      ,___                    ,___          ,___
@@ -115,19 +115,6 @@ KEYMAPS(
         ,Key_KeypadDivide   ,Key_4      ,Key_5  ,Key_6      ,Key_KeypadAdd
    ,___ ,Key_Semicolon      ,Key_1      ,Key_2  ,Key_3      ,Key_Equals
    ,___ ,___                ,Key_Comma  ,Key_0  ,Key_Period ,___
-  ),
-
-  [LAY_ALT_F] = KEYMAP_STACKED
-  (
-    ___   ,Key_Tab        ,___ ,Key_F4          ,___
-    ,___  ,Key_LeftArrow  ,___ ,Key_RightArrow  ,___
-    ,___  ,___            ,___ ,___             ,___ ,___
-    ,___  ,___            ,___ ,___             ,___ ,___
-
-         ,___ ,___ ,___ ,___ ,___
-         ,___ ,___ ,___ ,___ ,___
-    ,___ ,___ ,___ ,___ ,___ ,___
-    ,___ ,___ ,___ ,___ ,___ ,___
   ),
 
   [LAY_F] = KEYMAP_STACKED
@@ -170,47 +157,52 @@ const macro_t *macroAction(uint8_t macro_id, KeyEvent &event) {
   switch (macro_id) {
   case MACRO_a_UMLAUT:
     if (keyToggledOn(event.state)) {
-      return MACRO(T(RightAlt), D(LeftShift), T(Quote), U(LeftShift), T(A));
+      return MACRO(D(LeftShift), D(LeftControl), D(F13), U(LeftShift), U(LeftControl), U(F13), D(LeftShift), T(Quote), U(LeftShift), T(A));
     }
     break;
   case MACRO_A_UMLAUT:
     if (keyToggledOn(event.state)) {
-      return MACRO(T(RightAlt), D(LeftShift), T(Quote), T(A), U(LeftShift));
+      return MACRO(D(LeftShift), D(LeftControl), D(F13), U(LeftShift), U(LeftControl), U(F13), D(LeftShift), T(Quote), T(A), U(LeftShift));
     }
     break;
   case MACRO_ESZETT:
     if (keyToggledOn(event.state)) {
-      return MACRO(SEQ(K(RightAlt), K(S), K(S)));
+      return MACRO(D(LeftShift), D(LeftControl), D(F13), U(LeftShift), U(LeftControl), U(F13), T(S), T(S));
     }
     break;
   case MACRO_u_UMLAUT:
     if (keyToggledOn(event.state)) {
-      return MACRO(T(RightAlt), D(LeftShift), T(Quote), U(LeftShift), T(U));
+      return MACRO(D(LeftShift), D(LeftControl), D(F13), U(LeftShift), U(LeftControl), U(F13), D(LeftShift), T(Quote), U(LeftShift), T(U));
     }
     break;
   case MACRO_U_UMLAUT:
     if (keyToggledOn(event.state)) {
-      return MACRO(T(RightAlt), D(LeftShift), T(Quote), T(U), U(LeftShift));
+      return MACRO(D(LeftShift), D(LeftControl), D(F13), U(LeftShift), U(LeftControl), U(F13), D(LeftShift), T(Quote), T(U), U(LeftShift));
     }
     break;
   case MACRO_o_UMLAUT:
     if (keyToggledOn(event.state)) {
-      return MACRO(T(RightAlt), D(LeftShift), T(Quote), U(LeftShift), T(O));
+      return MACRO(D(LeftShift), D(LeftControl), D(F13), U(LeftShift), U(LeftControl), U(F13), D(LeftShift), T(Quote), U(LeftShift), T(O));
     }
     break;
   case MACRO_O_UMLAUT:
     if (keyToggledOn(event.state)) {
-      return MACRO(T(RightAlt), D(LeftShift), T(Quote), T(O), U(LeftShift));
+      return MACRO(D(LeftShift), D(LeftControl), D(F13), U(LeftShift), U(LeftControl), U(F13), D(LeftShift), T(Quote), T(O), U(LeftShift));
     }
     break;
   case MACRO_e_AIGU:
     if (keyToggledOn(event.state)) {
-      return MACRO(T(RightAlt), T(Quote), T(E));
+      return MACRO(D(LeftShift), D(LeftControl), D(F13), U(LeftShift), U(LeftControl), U(F13), T(Quote), T(E));
     }
     break;
   case MACRO_E_AIGU:
     if (keyToggledOn(event.state)) {
-      return MACRO(T(RightAlt), T(Quote), D(LeftShift), T(E), U(LeftShift));
+      return MACRO(D(LeftShift), D(LeftControl), D(F13), U(LeftShift), U(LeftControl), U(F13), T(Quote), D(LeftShift), T(E), U(LeftShift));
+    }
+    break;
+  case MACRO_GUI_Space:
+    if (keyToggledOn(event.state)) {
+      return MACRO(D(LeftGui), T(Space), U(LeftGui));
     }
     break;
   default:
@@ -224,7 +216,7 @@ void tapDanceAction(uint8_t tap_dance_index, KeyAddr key_addr, uint8_t tap_count
   switch (tap_dance_index) {
   case 0:
     // Esc/screenshot tapdance
-    return tapDanceActionKeys(tap_count, tap_dance_action, Key_Esc, LSHIFT(LGUI(Key_S)));
+    return tapDanceActionKeys(tap_count, tap_dance_action, Key_Esc, LSHIFT(LGUI(Key_5)));
   case 1:
     // Space/Enter tapdance
     return tapDanceActionKeys(tap_count, tap_dance_action, Key_Space, Key_Enter);
@@ -247,7 +239,7 @@ void setup() {
   // no configuration exists.
   SpaceCadetConfig.disableSpaceCadetIfUnconfigured();
 
-  Qukeys.setOverlapThreshold(20);  // Helps to make CTR_L work with Eike's typing habits
+  Qukeys.setOverlapThreshold(20);  // Helps to make GUI_T work with Eike's typing habits
 
   LongPress.enable();
   LongPress.setTimeout(130);
@@ -255,7 +247,9 @@ void setup() {
 
   LONGPRESS(
     // Window overview on Esc
-    kaleidoscope::plugin::LongPressKey(kaleidoscope::plugin::longpress::ALL_LAYERS, TD(0), LGUI(Key_Tab)),
+    kaleidoscope::plugin::LongPressKey(kaleidoscope::plugin::longpress::ALL_LAYERS, TD(0), LCTRL(Key_UpArrow)),
+    // GUI+Space on tap, Shift on hold
+    kaleidoscope::plugin::LongPressKey(kaleidoscope::plugin::longpress::ALL_LAYERS, M(MACRO_GUI_Space), Key_LeftShift),
     // Autoshift umlauts
     kaleidoscope::plugin::LongPressKey(LAY_SPC_UMLAUT, M(MACRO_a_UMLAUT), M(MACRO_A_UMLAUT)),
     kaleidoscope::plugin::LongPressKey(LAY_SPC_UMLAUT, M(MACRO_u_UMLAUT), M(MACRO_U_UMLAUT)),
