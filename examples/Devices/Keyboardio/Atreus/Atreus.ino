@@ -216,7 +216,7 @@ void tapDanceAction(uint8_t tap_dance_index, KeyAddr key_addr, uint8_t tap_count
   switch (tap_dance_index) {
   case 0:
     // Esc/screenshot tapdance
-    return tapDanceActionKeys(tap_count, tap_dance_action, Key_Esc, LSHIFT(LGUI(Key_5)));
+    return tapDanceActionKeys(tap_count, tap_dance_action, Key_Esc, LSHIFT(LGUI(Key_4)));
   case 1:
     // Space/Enter tapdance
     return tapDanceActionKeys(tap_count, tap_dance_action, Key_Space, Key_Enter);
