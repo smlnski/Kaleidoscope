@@ -148,10 +148,10 @@ KALEIDOSCOPE_INIT_PLUGINS(
   OneShotConfig,
   EscapeOneShot,
   EscapeOneShotConfig,
-  Macros,
-  DynamicMacros,
   LongPress,
   LongPressConfig,
+  Macros,
+  DynamicMacros,
   TapDance);
 
 const macro_t *macroAction(uint8_t macro_id, KeyEvent &event) {
@@ -198,7 +198,7 @@ const macro_t *macroAction(uint8_t macro_id, KeyEvent &event) {
     break;
   case MACRO_CAPSLOCK:
     if (keyToggledOn(event.state)) {
-      return MACRO(D(CapsLock), W(100), U(CapsLock)); // macOS ignores CapsLock presses shorter than 100 ms
+      return MACRO(D(CapsLock), W(120), U(CapsLock)); // macOS ignores CapsLock presses shorter than 100 ms
     }
     break;
   default:
@@ -211,10 +211,10 @@ const macro_t *macroAction(uint8_t macro_id, KeyEvent &event) {
 void tapDanceAction(uint8_t tap_dance_index, KeyAddr key_addr, uint8_t tap_count, kaleidoscope::plugin::TapDance::ActionType tap_dance_action) {
   switch (tap_dance_index) {
   case 0:
-    // Esc/screenshot tapdance
+    // Esc on tap, screenshot on double tap
     return tapDanceActionKeys(tap_count, tap_dance_action, Key_Esc, LSHIFT(LGUI(Key_4)));
   case 1:
-    // Space/Enter tapdance
+    // Space on tap, Enter on double tap
     return tapDanceActionKeys(tap_count, tap_dance_action, Key_Space, Key_Enter);
   }
 }
@@ -242,15 +242,15 @@ void setup() {
   LongPress.setAutoshiftEnabled(LongPress.letterKeys() | LongPress.symbolKeys());
 
   LONGPRESS(
-    // Window overview on Esc
+    // Esc on tap, Mission Control on hold
     kaleidoscope::plugin::LongPressKey(kaleidoscope::plugin::longpress::ALL_LAYERS, TD(0), LCTRL(Key_UpArrow)),
-    // GUI+Space on tap, Shift on hold
+    // Spotlight on tap, Control on hold
     kaleidoscope::plugin::LongPressKey(kaleidoscope::plugin::longpress::ALL_LAYERS, M(MACRO_GUI_Space), Key_LeftControl),
-    // Autoshift umlauts
+    // Lowercase umlauts on tap, uppercase umlauts on hold
     kaleidoscope::plugin::LongPressKey(LAY_SPC_UMLAUT, M(MACRO_a_UMLAUT), M(MACRO_A_UMLAUT)),
     kaleidoscope::plugin::LongPressKey(LAY_SPC_UMLAUT, M(MACRO_u_UMLAUT), M(MACRO_U_UMLAUT)),
     kaleidoscope::plugin::LongPressKey(LAY_SPC_UMLAUT, M(MACRO_o_UMLAUT), M(MACRO_O_UMLAUT)),
-    // Shift when holding CapsLock
+    // CapsLock on tap, Shift on hold
     kaleidoscope::plugin::LongPressKey(kaleidoscope::plugin::longpress::ALL_LAYERS, M(MACRO_CAPSLOCK), Key_LeftShift));
 
 }
