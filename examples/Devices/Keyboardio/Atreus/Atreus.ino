@@ -107,9 +107,9 @@ KEYMAPS(
 
   [LAY_ARR_NUM] =  KEYMAP_STACKED
   (
-    Key_PageUp  ,LALT(Key_LeftArrow)  ,Key_UpArrow    ,LALT(Key_RightArrow)   ,Key_PageDown
-    ,Key_Home   ,Key_LeftArrow        ,Key_DownArrow  ,Key_RightArrow         ,Key_End
-    ,___      ,___                    ,___            ,___                    ,XXX          ,___ // left Z, X, C, V transparent for undo, cut, copy, paste
+    XXX                   ,LALT(Key_LeftArrow)  ,Key_UpArrow    ,LALT(Key_RightArrow) ,XXX
+    ,LCTRL(Key_LeftArrow) ,Key_LeftArrow        ,Key_DownArrow  ,Key_RightArrow       ,LCTRL(Key_RightArrow)
+    ,___                  ,___                  ,___            ,___                  ,XXX                    ,___ // left Z, X, C, V transparent for undo, cut, copy, paste
     ,___                  ,___                  ,___            ,___                  ,___                    ,___
 
         ,Key_KeypadMultiply ,Key_7      ,Key_8  ,Key_9      ,Key_Minus
