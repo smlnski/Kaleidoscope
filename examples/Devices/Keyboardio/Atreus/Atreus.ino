@@ -86,10 +86,10 @@ KEYMAPS(
     ,Key_Z  ,Key_X              ,Key_C        ,Key_V      ,Key_B            ,Key_Backtick
     ,TD(0)  ,M(MACRO_CAPSLOCK)  ,Key_LeftAlt  ,GUI_T(Tab) ,OSL(LAY_ARR_NUM) ,OSL(LAY_SPC_UMLAUT)
 
-                    ,Key_Y  ,Key_U              ,Key_I      ,Key_O       ,Key_P
-                    ,Key_H  ,Key_J              ,Key_K      ,Key_L       ,Key_Semicolon
-    ,Key_Backslash  ,Key_N  ,Key_M              ,Key_Comma  ,Key_Period  ,Key_Slash
-    ,Key_Backspace  ,TD(1)  ,M(MACRO_GUI_Space) ,Key_Minus  ,Key_Quote   ,Key_Delete
+                    ,Key_Y  ,Key_U            ,Key_I      ,Key_O       ,Key_P
+                    ,Key_H  ,Key_J            ,Key_K      ,Key_L       ,Key_Semicolon
+    ,Key_Backslash  ,Key_N  ,Key_M            ,Key_Comma  ,Key_Period  ,Key_Slash
+    ,Key_Backspace  ,TD(1)  ,Key_LeftControl  ,Key_Minus  ,Key_Quote   ,Key_Delete
   ),
 
   [LAY_SPC_UMLAUT] =  KEYMAP_STACKED
@@ -231,8 +231,6 @@ void setup() {
   LONGPRESS(
     // Esc on tap, Mission Control on hold
     kaleidoscope::plugin::LongPressKey(kaleidoscope::plugin::longpress::ALL_LAYERS, TD(0), LCTRL(Key_UpArrow)),
-    // Spotlight on tap, Control on hold
-    kaleidoscope::plugin::LongPressKey(kaleidoscope::plugin::longpress::ALL_LAYERS, M(MACRO_GUI_Space), Key_LeftControl),
     // Lowercase umlauts on tap, uppercase umlauts on hold
     kaleidoscope::plugin::LongPressKey(LAY_SPC_UMLAUT, M(MACRO_a_UMLAUT), M(MACRO_A_UMLAUT)),
     kaleidoscope::plugin::LongPressKey(LAY_SPC_UMLAUT, M(MACRO_u_UMLAUT), M(MACRO_U_UMLAUT)),
