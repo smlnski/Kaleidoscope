@@ -22,6 +22,22 @@ RUN 1 cycle
 EXPECT keyboard-report empty # Report should be empty
 
 # ==============================================================================
+NAME OneShot fast typing - no phantom key
+
+RUN 5 ms
+
+PRESS OSL_1
+RUN 5 ms
+RELEASE OSL_1
+PRESS A  # Press A in the same cycle as OSL_1 release (fast typing)
+RUN 1 cycle
+EXPECT keyboard-report Key_C # There should be only `C` (layer 1's key at A position)
+RUN 5 ms
+RELEASE A
+RUN 1 cycle
+EXPECT keyboard-report empty # Report should be empty
+
+# ==============================================================================
 NAME OneShot double tap layer 896
 
 RUN 5 ms
