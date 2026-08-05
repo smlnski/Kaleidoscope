@@ -74,17 +74,16 @@ enum {
   MACRO_e_AIGU,
   MACRO_E_AIGU,
   MACRO_GUI_Space,
-  MACRO_CAPSLOCK
 };
 
 // clang-format off
 KEYMAPS(
   [LAY_QWERTY] = KEYMAP_STACKED
   (
-    Key_Q   ,Key_W              ,Key_E        ,Key_R      ,Key_T
-    ,Key_A  ,Key_S              ,Key_D        ,Key_F      ,Key_G
-    ,Key_Z  ,Key_X              ,Key_C        ,Key_V      ,Key_B            ,Key_Backtick
-    ,TD(0)  ,M(MACRO_CAPSLOCK)  ,Key_LeftAlt  ,GUI_T(Tab) ,OSL(LAY_ARR_NUM) ,OSL(LAY_SPC_UMLAUT)
+    Key_Q   ,Key_W          ,Key_E        ,Key_R      ,Key_T
+    ,Key_A  ,Key_S          ,Key_D        ,Key_F      ,Key_G
+    ,Key_Z  ,Key_X          ,Key_C        ,Key_V      ,Key_B            ,Key_Backtick
+    ,TD(0)  ,Key_LeftShift  ,Key_LeftAlt  ,GUI_T(Tab) ,OSL(LAY_ARR_NUM) ,OSL(LAY_SPC_UMLAUT)
 
                     ,Key_Y  ,Key_U            ,Key_I      ,Key_O       ,Key_P
                     ,Key_H  ,Key_J            ,Key_K      ,Key_L       ,Key_Semicolon
@@ -183,11 +182,6 @@ const macro_t *macroAction(uint8_t macro_id, KeyEvent &event) {
       return MACRO(D(LeftGui), T(Space), U(LeftGui));
     }
     break;
-  case MACRO_CAPSLOCK:
-    if (keyToggledOn(event.state)) {
-      return MACRO(D(CapsLock), W(120), U(CapsLock)); // macOS ignores CapsLock presses shorter than 100 ms
-    }
-    break;
   default:
     break;
   }
@@ -235,9 +229,7 @@ void setup() {
     kaleidoscope::plugin::LongPressKey(LAY_SPC_UMLAUT, M(MACRO_a_UMLAUT), M(MACRO_A_UMLAUT)),
     kaleidoscope::plugin::LongPressKey(LAY_SPC_UMLAUT, M(MACRO_u_UMLAUT), M(MACRO_U_UMLAUT)),
     kaleidoscope::plugin::LongPressKey(LAY_SPC_UMLAUT, M(MACRO_o_UMLAUT), M(MACRO_O_UMLAUT)),
-    // CapsLock on tap, Shift on hold
-    kaleidoscope::plugin::LongPressKey(kaleidoscope::plugin::longpress::ALL_LAYERS, M(MACRO_CAPSLOCK), Key_LeftShift));
-
+    );
 }
 
 void loop() {
