@@ -109,13 +109,26 @@ KEYMAPS(
     XXX                   ,LALT(Key_LeftArrow)  ,Key_UpArrow    ,LALT(Key_RightArrow) ,XXX
     ,LCTRL(Key_LeftArrow) ,Key_LeftArrow        ,Key_DownArrow  ,Key_RightArrow       ,LCTRL(Key_RightArrow)
     ,___                  ,___                  ,___            ,___                  ,XXX                    ,___ // left Z, X, C, V transparent for undo, cut, copy, paste
-    ,___                  ,___                  ,___            ,___                  ,___                    ,___
+    ,___                  ,___                  ,SH(LAY_F)      ,___                  ,___                    ,___
 
         ,Key_KeypadMultiply ,Key_7      ,Key_8  ,Key_9      ,Key_Minus
         ,Key_KeypadDivide   ,Key_4      ,Key_5  ,Key_6      ,Key_KeypadAdd
    ,___ ,Key_Semicolon      ,Key_1      ,Key_2  ,Key_3      ,Key_Equals
    ,___ ,___                ,Key_Comma  ,Key_0  ,Key_Period ,___
   ),
+
+  [LAY_F] = KEYMAP_STACKED
+  (
+    ___   ,___ ,___ ,___ ,___
+    ,___  ,___ ,___ ,___ ,___
+    ,___  ,___ ,___ ,___ ,___ ,___
+    ,___  ,___ ,___ ,___ ,___ ,___
+
+         ,___ ,Key_F7 ,Key_F8 ,Key_F9 ,Key_F10
+         ,___ ,Key_F4 ,Key_F5 ,Key_F6 ,Key_F11
+    ,___ ,___ ,Key_F1 ,Key_F2 ,Key_F3 ,Key_F12
+    ,___ ,___ ,___    ,___    ,___    ,___
+  )
 )
 // clang-format on
 
