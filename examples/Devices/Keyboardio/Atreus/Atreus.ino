@@ -107,7 +107,7 @@ KEYMAPS(
   [LAY_ARR_NUM] =  KEYMAP_STACKED
   (
     XXX                   ,LALT(Key_LeftArrow)  ,Key_UpArrow    ,LALT(Key_RightArrow) ,XXX
-    ,LCTRL(Key_LeftArrow) ,Key_LeftArrow        ,Key_DownArrow  ,Key_RightArrow       ,LCTRL(Key_RightArrow)
+    ,LGUI(Key_LeftArrow)  ,Key_LeftArrow        ,Key_DownArrow  ,Key_RightArrow       ,LGUI(Key_RightArrow)
     ,___                  ,___                  ,___            ,___                  ,XXX                    ,___ // left Z, X, C, V transparent for undo, cut, copy, paste
     ,___                  ,___                  ,SH(LAY_F)      ,___                  ,___                    ,___
 
