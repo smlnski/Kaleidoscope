@@ -199,8 +199,8 @@ const macro_t *macroAction(uint8_t macro_id, KeyEvent &event) {
 void tapDanceAction(uint8_t tap_dance_index, KeyAddr key_addr, uint8_t tap_count, kaleidoscope::plugin::TapDance::ActionType tap_dance_action) {
   switch (tap_dance_index) {
   case 0:
-    // Esc on tap, screenshot on double tap
-    return tapDanceActionKeys(tap_count, tap_dance_action, Key_Esc, LSHIFT(LGUI(Key_4)));
+    // Esc on tap, screenshot on double tap, screenshot menu on triple tap
+    return tapDanceActionKeys(tap_count, tap_dance_action, Key_Esc, LSHIFT(LGUI(Key_4)), LSHIFT(LGUI(Key_5)));
   case 1:
     // Space on tap, Enter on double tap
     return tapDanceActionKeys(tap_count, tap_dance_action, Key_Space, Key_Enter);
