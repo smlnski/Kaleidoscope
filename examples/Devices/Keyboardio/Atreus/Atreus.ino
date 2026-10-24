@@ -113,7 +113,7 @@ KEYMAPS(
     Key_Q   ,Key_W          ,Key_E        ,Key_R      ,Key_T
     ,Key_A  ,Key_S          ,Key_D        ,Key_F      ,Key_G
     ,Key_Z  ,Key_X          ,Key_C        ,Key_V      ,Key_B            ,Key_Backtick
-    ,TD(0)  ,Key_LeftShift  ,Key_LeftAlt  ,GUI_T(Tab) ,OSL(LAY_ARR_NUM) ,OSL(LAY_SPC_UMLAUT)
+    ,TD(0)  ,Key_LeftShift  ,Key_LeftAlt  ,GUI_T(Tab) ,SH(LAY_ARR_NUM)  ,OSL(LAY_SPC_UMLAUT)
 
                     ,Key_Y  ,Key_U            ,Key_I      ,Key_O       ,Key_P
                     ,Key_H  ,Key_J            ,Key_K      ,Key_L       ,Key_Semicolon
