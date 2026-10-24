@@ -73,7 +73,38 @@ enum {
   MACRO_O_UMLAUT,
   MACRO_e_AIGU,
   MACRO_E_AIGU,
+  MACRO_APP_SWITCH,
+  MACRO_WINDOW_SWITCH,
 };
+
+class AppSwitcher : public kaleidoscope::Plugin {
+ public:
+  void activate() {
+    active_ = true;
+  }
+
+  kaleidoscope::EventHandlerResult beforeReportingState(const KeyEvent &event) {
+    if (active_)
+      kaleidoscope::Runtime.addToReport(Key_LeftGui);
+    return kaleidoscope::EventHandlerResult::OK;
+  }
+
+  kaleidoscope::EventHandlerResult afterEachCycle() {
+    if (active_ && !Layer.isActive(LAY_ARR_NUM)) {
+      active_ = false;
+      // Send a report without Cmd so the host sees it released
+      KeyEvent event(KeyAddr::none(), WAS_PRESSED);
+      kaleidoscope::Runtime.prepareKeyboardReport(event);
+      kaleidoscope::Runtime.sendKeyboardReport(event);
+    }
+    return kaleidoscope::EventHandlerResult::OK;
+  }
+
+ private:
+  bool active_ = false;
+};
+
+AppSwitcher AppSwitcher;
 
 // clang-format off
 KEYMAPS(
@@ -105,9 +136,9 @@ KEYMAPS(
 
   [LAY_ARR_NUM] =  KEYMAP_STACKED
   (
-    XXX                   ,LALT(Key_LeftArrow)  ,Key_UpArrow    ,LALT(Key_RightArrow) ,XXX
+    XXX                   ,LALT(Key_LeftArrow)  ,Key_UpArrow    ,LALT(Key_RightArrow) ,M(MACRO_APP_SWITCH)
     ,LGUI(Key_LeftArrow)  ,Key_LeftArrow        ,Key_DownArrow  ,Key_RightArrow       ,LGUI(Key_RightArrow)
-    ,___                  ,___                  ,___            ,___                  ,XXX                    ,___ // left Z, X, C, V transparent for undo, cut, copy, paste
+    ,___                  ,___                  ,___            ,___                  ,M(MACRO_WINDOW_SWITCH) ,___ // left Z, X, C, V transparent for undo, cut, copy, paste
     ,___                  ,___                  ,SH(LAY_F)      ,___                  ,___                    ,___
 
         ,Key_KeypadMultiply ,Key_7      ,Key_8  ,Key_9      ,Key_Minus
@@ -150,7 +181,8 @@ KALEIDOSCOPE_INIT_PLUGINS(
   LongPressConfig,
   Macros,
   DynamicMacros,
-  TapDance);
+  TapDance,
+  AppSwitcher);
 
 const macro_t *macroAction(uint8_t macro_id, KeyEvent &event) {
   switch (macro_id) {
@@ -187,6 +219,18 @@ const macro_t *macroAction(uint8_t macro_id, KeyEvent &event) {
   case MACRO_O_UMLAUT:
     if (keyToggledOn(event.state)) {
       return MACRO(D(LeftShift), D(LeftControl), D(F13), U(LeftShift), U(LeftControl), U(F13), D(LeftShift), T(Quote), T(O), U(LeftShift));
+    }
+    break;
+  case MACRO_APP_SWITCH:
+    if (keyToggledOn(event.state)) {
+      AppSwitcher.activate();
+      event.key = Key_Tab;  // Cmd+Tab
+    }
+    break;
+  case MACRO_WINDOW_SWITCH:
+    if (keyToggledOn(event.state)) {
+      AppSwitcher.activate();
+      event.key = Key_Backtick;  // Cmd+<, the "U.S. custom" layout maps Cmd+` to Cmd+<
     }
     break;
   default:
