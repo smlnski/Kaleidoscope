@@ -267,6 +267,8 @@ void setup() {
   // no configuration exists.
   SpaceCadetConfig.disableSpaceCadetIfUnconfigured();
 
+  OneShot.disableStickabilityForLayers();
+
   Qukeys.setOverlapThreshold(20);  // Helps to make GUI_T work with Eike's typing habits
 
   LongPress.enable();
