@@ -138,7 +138,7 @@ KEYMAPS(
   (
     XXX                   ,LALT(Key_LeftArrow)  ,Key_UpArrow    ,LALT(Key_RightArrow) ,M(MACRO_APP_SWITCH)
     ,LGUI(Key_LeftArrow)  ,Key_LeftArrow        ,Key_DownArrow  ,Key_RightArrow       ,LGUI(Key_RightArrow)
-    ,___                  ,___                  ,___            ,___                  ,M(MACRO_WINDOW_SWITCH) ,___ // left Z, X, C, V transparent for undo, cut, copy, paste
+    ,XXX                  ,XXX                  ,XXX            ,XXX                  ,M(MACRO_WINDOW_SWITCH) ,___
     ,___                  ,___                  ,SH(LAY_F)      ,___                  ,___                    ,___
 
         ,Key_KeypadMultiply ,Key_7      ,Key_8  ,Key_9      ,Key_Minus
@@ -149,14 +149,14 @@ KEYMAPS(
 
   [LAY_F] = KEYMAP_STACKED
   (
-    ___   ,___ ,___ ,___ ,___
-    ,___  ,___ ,___ ,___ ,___
-    ,___  ,___ ,___ ,___ ,___ ,___
+    XXX   ,XXX ,XXX ,XXX ,XXX
+    ,XXX  ,XXX ,XXX ,XXX ,XXX
+    ,XXX  ,XXX ,XXX ,XXX ,XXX ,___
     ,___  ,___ ,___ ,___ ,___ ,___
 
-         ,___ ,Key_F7 ,Key_F8 ,Key_F9 ,Key_F10
-         ,___ ,Key_F4 ,Key_F5 ,Key_F6 ,Key_F11
-    ,___ ,___ ,Key_F1 ,Key_F2 ,Key_F3 ,Key_F12
+         ,XXX ,Key_F7 ,Key_F8 ,Key_F9 ,Key_F10
+         ,XXX ,Key_F4 ,Key_F5 ,Key_F6 ,Key_F11
+    ,___ ,XXX ,Key_F1 ,Key_F2 ,Key_F3 ,Key_F12
     ,___ ,___ ,___    ,___    ,___    ,___
   )
 )
