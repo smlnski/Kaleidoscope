@@ -75,6 +75,7 @@ enum {
   MACRO_E_AIGU,
   MACRO_APP_SWITCH,
   MACRO_WINDOW_SWITCH,
+  MACRO_CAPS,
 };
 
 class AppSwitcher : public kaleidoscope::Plugin {
@@ -113,7 +114,7 @@ KEYMAPS(
     Key_Q   ,Key_W          ,Key_E        ,Key_R      ,Key_T
     ,Key_A  ,Key_S          ,Key_D        ,Key_F      ,Key_G
     ,Key_Z  ,Key_X          ,Key_C        ,Key_V      ,Key_B            ,Key_Backtick
-    ,TD(0)  ,Key_LeftShift  ,Key_LeftAlt  ,GUI_T(Tab) ,SH(LAY_ARR_NUM)  ,OSL(LAY_SPC_UMLAUT)
+    ,TD(0)  ,M(MACRO_CAPS)  ,Key_LeftAlt  ,GUI_T(Tab) ,SH(LAY_ARR_NUM)  ,OSL(LAY_SPC_UMLAUT)
 
                     ,Key_Y  ,Key_U            ,Key_I      ,Key_O       ,Key_P
                     ,Key_H  ,Key_J            ,Key_K      ,Key_L       ,Key_Semicolon
@@ -233,6 +234,12 @@ const macro_t *macroAction(uint8_t macro_id, KeyEvent &event) {
       event.key = Key_Backtick;  // Cmd+<, the "U.S. custom" layout maps Cmd+` to Cmd+<
     }
     break;
+  case MACRO_CAPS:
+    if (keyToggledOn(event.state)) {
+      // macOS ignores very short CapsLock taps, so hold it briefly
+      return MACRO(D(CapsLock), W(150), U(CapsLock));
+    }
+    break;
   default:
     break;
   }
@@ -269,6 +276,10 @@ void setup() {
 
   OneShot.disableStickabilityForLayers();
 
+  QUKEYS(
+    // CapsLock on tap, Shift on hold
+    kaleidoscope::plugin::Qukey(0, KeyAddr(3, 1), Key_LeftShift));
+  Qukeys.setHoldTimeout(130);
   Qukeys.setOverlapThreshold(20);  // Helps to make GUI_T work with Eike's typing habits
 
   LongPress.enable();
