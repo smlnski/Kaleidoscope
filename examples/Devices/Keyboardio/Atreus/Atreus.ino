@@ -250,8 +250,11 @@ const macro_t *macroAction(uint8_t macro_id, KeyEvent &event) {
 void tapDanceAction(uint8_t tap_dance_index, KeyAddr key_addr, uint8_t tap_count, kaleidoscope::plugin::TapDance::ActionType tap_dance_action) {
   switch (tap_dance_index) {
   case 0:
-    // Esc on tap, screenshot on double tap, screenshot menu on triple tap
-    return tapDanceActionKeys(tap_count, tap_dance_action, Key_Esc, LSHIFT(LGUI(Key_4)), LSHIFT(LGUI(Key_5)));
+    // Esc on tap, screenshot to clipboard on double tap, screenshot on triple tap,
+    // Mission Control on hold
+    if (tap_dance_action == kaleidoscope::plugin::TapDance::Hold)
+      return tapDanceActionKeys(tap_count, tap_dance_action, LCTRL(Key_UpArrow));
+    return tapDanceActionKeys(tap_count, tap_dance_action, Key_Esc, LCTRL(LSHIFT(LGUI(Key_4))), LSHIFT(LGUI(Key_4)));
   case 1:
     // Space on tap, Enter on double tap
     return tapDanceActionKeys(tap_count, tap_dance_action, Key_Space, Key_Enter);
@@ -287,8 +290,6 @@ void setup() {
   LongPress.setAutoshiftEnabled(LongPress.letterKeys() | LongPress.symbolKeys());
 
   LONGPRESS(
-    // Esc on tap, Mission Control on hold
-    kaleidoscope::plugin::LongPressKey(kaleidoscope::plugin::longpress::ALL_LAYERS, TD(0), LCTRL(Key_UpArrow)),
     // Lowercase umlauts on tap, uppercase umlauts on hold
     kaleidoscope::plugin::LongPressKey(LAY_SPC_UMLAUT, M(MACRO_a_UMLAUT), M(MACRO_A_UMLAUT)),
     kaleidoscope::plugin::LongPressKey(LAY_SPC_UMLAUT, M(MACRO_u_UMLAUT), M(MACRO_U_UMLAUT)),
