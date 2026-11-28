@@ -189,37 +189,37 @@ const macro_t *macroAction(uint8_t macro_id, KeyEvent &event) {
   switch (macro_id) {
   case MACRO_a_UMLAUT:
     if (keyToggledOn(event.state)) {
-      return MACRO(D(LeftShift), D(LeftControl), D(F13), U(LeftShift), U(LeftControl), U(F13), D(LeftShift), T(Quote), U(LeftShift), T(A));
+      return MACRO(D(LeftAlt), T(U), U(LeftAlt), T(A));
     }
     break;
   case MACRO_A_UMLAUT:
     if (keyToggledOn(event.state)) {
-      return MACRO(D(LeftShift), D(LeftControl), D(F13), U(LeftShift), U(LeftControl), U(F13), D(LeftShift), T(Quote), T(A), U(LeftShift));
+      return MACRO(D(LeftAlt), T(U), U(LeftAlt), D(LeftShift), T(A), U(LeftShift));
     }
     break;
   case MACRO_ESZETT:
     if (keyToggledOn(event.state)) {
-      return MACRO(D(LeftShift), D(LeftControl), D(F13), U(LeftShift), U(LeftControl), U(F13), T(S), T(S));
+      return MACRO(D(LeftAlt), T(S), U(LeftAlt));
     }
     break;
   case MACRO_u_UMLAUT:
     if (keyToggledOn(event.state)) {
-      return MACRO(D(LeftShift), D(LeftControl), D(F13), U(LeftShift), U(LeftControl), U(F13), D(LeftShift), T(Quote), U(LeftShift), T(U));
+      return MACRO(D(LeftAlt), T(U), U(LeftAlt), T(U));
     }
     break;
   case MACRO_U_UMLAUT:
     if (keyToggledOn(event.state)) {
-      return MACRO(D(LeftShift), D(LeftControl), D(F13), U(LeftShift), U(LeftControl), U(F13), D(LeftShift), T(Quote), T(U), U(LeftShift));
+      return MACRO(D(LeftAlt), T(U), U(LeftAlt), D(LeftShift), T(U), U(LeftShift));
     }
     break;
   case MACRO_o_UMLAUT:
     if (keyToggledOn(event.state)) {
-      return MACRO(D(LeftShift), D(LeftControl), D(F13), U(LeftShift), U(LeftControl), U(F13), D(LeftShift), T(Quote), U(LeftShift), T(O));
+      return MACRO(D(LeftAlt), T(U), U(LeftAlt), T(O));
     }
     break;
   case MACRO_O_UMLAUT:
     if (keyToggledOn(event.state)) {
-      return MACRO(D(LeftShift), D(LeftControl), D(F13), U(LeftShift), U(LeftControl), U(F13), D(LeftShift), T(Quote), T(O), U(LeftShift));
+      return MACRO(D(LeftAlt), T(U), U(LeftAlt), D(LeftShift), T(O), U(LeftShift));
     }
     break;
   case MACRO_APP_SWITCH:
